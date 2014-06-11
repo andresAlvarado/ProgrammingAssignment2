@@ -1,6 +1,5 @@
 # I have created to functions as the example given. 
-# Library MASS contains the ginv function, this function
-# calculates inverse matrix for the matrix given by the user.
+# solve calculates inverse matrix for the matrix given by the user.
 
 # Make Matrix has functions to set and get values for 
 # inverse matrix and matrix given by the user.
@@ -55,14 +54,12 @@ makeMatrix <- function( p_matrix = matrix() )
 } 
 
 
-# cacheSolve function will make use of MASS library and
-# ginv function, aswell as the list returned by makeMatrix
+# cacheSolve function will make use of solve
+# function, aswell as the list returned by makeMatrix
 # function
 
 cacheSolve <- function(x, ...) 
 {
-  
-  library(MASS)
   
   # See if an inverse matrix for matrix given already exists in an environment
   l_inverseMatrix <- x$mcm.getInverseMatrix()
@@ -81,7 +78,7 @@ cacheSolve <- function(x, ...)
   matrix <- x$mcm.getMatrix()
   
   #Get inverse matrix
-  l_inverseMatrix <- ginv(matrix)
+  l_inverseMatrix <- solve(matrix)
   
   #Set Inverse Matrix  
   x$mcm.setInverseMatrix(l_inverseMatrix)
